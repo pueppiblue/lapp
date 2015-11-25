@@ -1,3 +1,17 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+redirect_home:
+  path: /
+  defaults:
+    _controller: FrameworkBundle:Redirect:Redirect
+    route: book_list
+
+book_list:
+  path: /books
+  defaults:
+    _controller: AppBundle:Book:listbooks
+
+
+
