@@ -12,9 +12,9 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\Book;
 
-class LoadBookData
+class LoadBookData implements FixtureInterface
 {
-    public function LoadBookData(ObjectManager $om){
+    public function load(ObjectManager $om){
         $book = new Book();
         $book
             ->setIsbn('123456')
