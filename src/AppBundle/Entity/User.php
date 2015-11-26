@@ -110,4 +110,3 @@ class User
         return $this->isActive;
     }
 }
-

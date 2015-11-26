@@ -2,15 +2,17 @@
 
 {% block body %}
     <div id='booklist'>
+        <h1>Liste der Bücher:</h1>
         <div>
-            Liste der Bücher:
+            <ul>
+                {% for book in books %}
+                    <li>{{ book.title }}</li>
+                {% else %}
+                    <li><em> no books found</em>/li>
+                {% endfor %}
+            </ul>
         </div>
-
-        {% for book in books %}
-            <div class="book">
-                {{ book.title }}
-            </div>
-        {% endfor %}
     </div>
+
 
 {% endblock %}

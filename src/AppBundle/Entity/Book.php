@@ -110,4 +110,3 @@ class Book
         return $this->author;
     }
 }
-

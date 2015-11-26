@@ -8,7 +8,6 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Book;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class BookController extends Controller
@@ -21,17 +20,15 @@ class BookController extends Controller
 
     private function getBookList(){
         // return array mit Booklist aus db
+//        $books = $this
+//            ->getDoctrine()
+//            ->getRepository('AppBundle:Book')
+//            ->findAll();
         $books = $this
             ->getDoctrine()
+            ->getManager()
             ->getRepository('AppBundle:Book')
-            ->findAll();
-
-        if (!$books){
-            throw $this->createNotFoundException(
-                'No books found in database'
-            );
-        }
-
+            ->findAllOrderedByTitle();
         return $books;
 
     }
