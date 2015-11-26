@@ -1,0 +1,20 @@
+AppBundle\Entity\Book:
+    type: entity
+    table: book
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        isbn:
+            type: string
+            length: 255
+        author:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
