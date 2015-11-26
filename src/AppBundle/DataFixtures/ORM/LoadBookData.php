@@ -21,25 +21,22 @@ class LoadBookData implements FixtureInterface
             ->setAuthor('Frau Holle')
             ->setTitle('Kissen schütteln leicht gemacht');
 
-        $om
-            ->persist($book);
+        $om->persist($book);
 
         $book = new Book();
         $book
             ->setIsbn('7836')
             ->setAuthor('Inet Held 85')
             ->setTitle('Symfony for checkers');
-        $om
-            ->persist($book);
+        $om->persist($book);
 
         $book = new Book();
         $book
             ->setIsbn('8787878')
             ->setAuthor('Dieter Scherenhand')
             ->setTitle('Die wundervolle Welt des Häkelns');
-        $om
-            ->persist($book)
-            ->flush();
+        $om->persist($book);
+        $om->flush();
     }
 
 }

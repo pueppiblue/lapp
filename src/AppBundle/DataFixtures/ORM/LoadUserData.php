@@ -15,14 +15,20 @@ use Doctrine\Common\Persistence\ObjectManager;
 class LoadUserData implements FixtureInterface
 {
     public function load(ObjectManager $manager){
-        $userAdmin = new User();
-        $userAdmin
+        $user = new User();
+        $user
             ->setUsername('admin')
             ->setPassword('admin')
             ->setIsActive(true);
+        $manager->persist($user);
 
-        $manager
-            ->persist($userAdmin)
-            ->flush();
+        $user = new User();
+        $user
+            ->setUsername('Bücherwurm84')
+            ->setPassword('readforlife')
+            ->setIsActive(true);
+        $manager->persist($user);
+
+        $manager->flush();
     }
 }
