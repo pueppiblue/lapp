@@ -7,7 +7,7 @@
  */
 namespace AppBundle\Controller;
 
-
+use AppBundle\Entity\Book;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class BookController extends Controller
@@ -21,5 +21,16 @@ class BookController extends Controller
 
     private function getBooks(){
         // return array mit Booklist aus db
+    }
+
+    private function addBook(){
+        $book = new Book();
+        $book->setISBN('12345');
+        $book->setAuthor('Graf Zahl');
+        $book->setTitle('Lust am Stricken');
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($book);
+        $em->flush();
     }
 }
