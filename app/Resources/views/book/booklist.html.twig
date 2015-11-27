@@ -6,7 +6,7 @@
         <div>
             <ul>
                 {% for book in books %}
-                    <li>{{ book.title }}</li>
+                    <li>{{ book.getTitle }}</li>
                 {% else %}
                     <li><em> no books found</em>/li>
                 {% endfor %}

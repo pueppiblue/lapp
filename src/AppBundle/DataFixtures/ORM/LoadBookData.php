@@ -14,6 +14,12 @@ use AppBundle\Entity\Book;
 
 class LoadBookData implements FixtureInterface
 {
+    /**
+     * implements interface method load()
+     * Load data fixtures with the passed EntityManager
+     *
+     * @param ObjectManager $manager
+     */
     public function load(ObjectManager $om){
         $book = new Book();
         $book

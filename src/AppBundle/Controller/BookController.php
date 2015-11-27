@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class BookController extends Controller
 {
-    public function listbooksAction()
+    public function listBooksAction()
     {
         $books = $this->getBookList();
         return $this->render('book/booklist.html.twig', array('books'=>$books));

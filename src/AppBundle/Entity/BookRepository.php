@@ -12,10 +12,13 @@ use Doctrine\ORM\EntityRepository;
 class BookRepository extends EntityRepository
 {
     public function findAllOrderedByTitle(){
-        $query = $this->getEntityManager()
-            ->createQuery(
-                'Select b FROM AppBundle:Book b ORDER BY b.title ASC'
-            );
+//        $query = $this->getEntityManager()
+//            ->createQuery(
+//                'Select b FROM AppBundle:Book b ORDER BY b.title ASC'
+//            );
+            $query = $this->createQueryBuilder('b')
+                ->orderBy('b.title', 'ASC')
+                ->getQuery();
         return $query->getResult();
     }
 
