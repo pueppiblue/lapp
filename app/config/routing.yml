@@ -14,5 +14,7 @@ book_list:
   defaults:
     _controller: AppBundle:Book:listbooks
 
-
-
+book_new:
+  path: /books/new
+  defaults:
+    _controller: AppBundle:Book:new

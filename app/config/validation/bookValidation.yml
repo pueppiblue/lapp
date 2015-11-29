@@ -1,0 +1,5 @@
+AppBundle\Entity\Book:
+  properties:
+    title:
+      - NotBlank
+          groups: [creation]
