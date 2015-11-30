@@ -1,0 +1,8 @@
+AppBundle\Entity\Book:
+  properties:
+    title:
+      - NotBlank: { groups: [creation] }
+    author:
+      - NotBlank: { groups: [creation] }
+    isbn:
+      - NotBlank: { groups: [creation] }
