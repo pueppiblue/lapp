@@ -8,7 +8,10 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Book;
+use AppBundle\Form\Type\BookType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class BookController extends Controller
 {
@@ -18,17 +21,27 @@ class BookController extends Controller
         return $this->render('book/booklist.html.twig', array('books'=>$books));
     }
 
-    public function newAction()
+    public function newAction(Request $request)
     {
         $book = new Book();
-        $book->setTitle('new_booktitle');
 
-        $form = $this->createFormBuilder($book)
-            ->add('title', 'text')
-            ->add('isbn','text')
-            ->add('author','text')
-            ->add('save','submit',array('label' => 'Add book!'))
-            ->getForm();
+        $form = $this->createForm('app_addBook', $book);
+//        $form = $this->createForm(new BookType, $book);
+
+//        $form = $this->createFormBuilder(
+//            $book, array('validation_groups' => array('creation')))
+//            ->add('title', 'text')
+//            ->add('isbn','text')
+//            ->add('author','text')
+//            ->add('save','submit',array('label' => 'Add book!'))
+//            ->getForm();
+
+        $form->handleRequest($request);
+
+        if($form->isValid()){
+            $this->addBookToModel($book);
+            return $this->redirectToRoute('book_list');
+        }
 
         return $this->render('book/bookCreateForm.html.twig',array('form' => $form->createView()));
     }
@@ -57,12 +70,7 @@ class BookController extends Controller
 
     }
 
-    private function addBook(){
-        $book = new Book();
-        $book->setISBN('12345');
-        $book->setAuthor('Graf Zahl');
-        $book->setTitle('Lust am Stricken');
-
+    private function addBookToModel(Book $book){
         $em = $this->getDoctrine()->getManager();
         $em->persist($book);
         $em->flush();

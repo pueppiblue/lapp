@@ -1,3 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
 {{ form_start(form) }}
-{{ form_widget(form) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.author) }}
+    {{ form_row(form.isbn) }}
 {{ form_end(form) }}
+
+{% endblock %}
