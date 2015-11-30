@@ -8,7 +8,6 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Book;
-use AppBundle\Form\Type\BookType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -25,14 +24,15 @@ class BookController extends Controller
     {
         $book = new Book();
 
-        $form = $this->createForm('app_addBook', $book);
+          $form = $this->createForm('app_addBook', $book);
+
 //        $form = $this->createForm(new BookType, $book);
 
 //        $form = $this->createFormBuilder(
 //            $book, array('validation_groups' => array('creation')))
-//            ->add('title', 'text')
-//            ->add('isbn','text')
-//            ->add('author','text')
+//            ->add('title', 'text', array('required'=>false))
+//            ->add('isbn','text', array('required'=>false))
+//            ->add('author','text', array('required'=>false))
 //            ->add('save','submit',array('label' => 'Add book!'))
 //            ->getForm();
 

@@ -16,9 +16,9 @@ class BookType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options){
         $builder
-            ->add('title')
-            ->add('author')
-            ->add('isbn')
+            ->add('title', null, array('required'=>false))
+            ->add('author', null, array('required'=>false))
+            ->add('isbn', null, array('required'=>false))
             ->add('save','submit')
         ;
 
@@ -32,7 +32,7 @@ class BookType extends AbstractType
         $resolver->setDefaults(
             array(
                 'data_class' => 'AppBundle\Entity\Book',
-                'validation_groups' => array('creation')
+                'validation_groups' => array('creation'),
             )
         );
 
