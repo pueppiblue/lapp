@@ -46,15 +46,6 @@ class BookController extends Controller
         return $this->render('book/bookCreateForm.html.twig',array('form' => $form->createView()));
     }
 
-    private function newBook($title, $author = '', $isbn = '')
-    {
-        $book = new Book();
-        $book->setTitle($title)
-            ->setAuthor($author)
-            ->setIsbn($isbn);
-        return $book;
-    }
-
     private function getBookList(){
         // return array mit Booklist aus db
 //        $books = $this

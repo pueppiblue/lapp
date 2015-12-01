@@ -2,11 +2,14 @@
 
 {% block body %}
 
-{{ form_start(form) }}
+{{ form_start(form, (app.debug) ? {attr : {'novalidate' : 'novalidate'}}) }}
     {{ form_errors(form) }}
     {{ form_row(form.title) }}
     {{ form_row(form.author) }}
     {{ form_row(form.isbn) }}
+    {{ form_row(form.price) }}
 {{ form_end(form) }}
-
+    <div>
+        <a href={{ path('book_list') }}> Back to list! </a>
+    </div>
 {% endblock %}

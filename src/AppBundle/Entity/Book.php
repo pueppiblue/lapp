@@ -27,6 +27,11 @@ class Book
      */
     private $author;
 
+    /**
+     * @var string
+     */
+    private $price;
+
 
     /**
      * Get id
@@ -109,4 +114,29 @@ class Book
     {
         return $this->author;
     }
+
+    /**
+     * Set price
+     *
+     * @param string $price
+     *
+     * @return Book
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
 }
+

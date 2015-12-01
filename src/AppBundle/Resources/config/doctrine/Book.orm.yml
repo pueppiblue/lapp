@@ -18,4 +18,8 @@ AppBundle\Entity\Book:
         author:
             type: string
             length: 255
+        price:
+            type: decimal
+            precision: 10
+            scale: 2
     lifecycleCallbacks: {  }
