@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id='bookview'>
+        <table>
+            <tr>
+                <td>Title</td>
+                <td>Price</td>
+            </tr>
+            <tr>
+                <td>{{ book.getTitle }}</td>
+                <td>{{ book.getPrice }}</td>
+            </tr>
+        </table>
+    </div>
+
+{% endblock %}

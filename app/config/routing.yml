@@ -12,9 +12,14 @@ redirect_home:
 book_list:
   path: /books
   defaults:
-    _controller: AppBundle:Book:listbooks
+    _controller: AppBundle:Book:listBooks
 
 book_new:
   path: /books/new
   defaults:
     _controller: AppBundle:Book:new
+
+book_view:
+  path: /books/view/{id}
+  defaults:
+    _controller: AppBundle:Book:viewBook

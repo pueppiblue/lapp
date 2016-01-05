@@ -2,7 +2,7 @@
 
 {% block body %}
 
-{{ form_start(form, (app.debug) ? {attr : {'novalidate' : 'novalidate'}}) }}
+{{ form_start(form, (app.debug) ? {attr : {'novalidate' : 'novalidate'}} : {}) }}
     {{ form_errors(form) }}
     {{ form_row(form.title) }}
     {{ form_row(form.author) }}
