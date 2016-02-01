@@ -23,3 +23,8 @@ book_view:
   path: /books/view/{id}
   defaults:
     _controller: AppBundle:Book:viewBook
+
+book_edit:
+  path: /books/edit/{id}
+  defaults:
+    _controller: AppBundle:Book:editBook

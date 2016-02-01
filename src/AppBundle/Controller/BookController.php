@@ -47,15 +47,26 @@ class BookController extends Controller
 
         $form = $this->createForm('app_addBook', $book);
 
-//        $form = $this->createForm(new BookType, $book);
+        $form->handleRequest($request);
 
-//        $form = $this->createFormBuilder(
-//            $book, array('validation_groups' => array('creation')))
-//            ->add('title', 'text', array('required'=>false))
-//            ->add('isbn','text', array('required'=>false))
-//            ->add('author','text', array('required'=>false))
-//            ->add('save','submit',array('label' => 'Add book!'))
-//            ->getForm();
+        if ($form->isValid()) {
+            $this->addBookToModel($book);
+            return $this->redirectToRoute('book_list');
+        }
+
+        return $this->render('book/bookCreateForm.html.twig', array('form' => $form->createView()));
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse|Response
+     */
+    public function editBookAction(Request $request)
+    {
+        $book = $this->getBook($request->get('id'));
+
+        $form = $this->createForm('app_addBook', $book);
 
         $form->handleRequest($request);
 
