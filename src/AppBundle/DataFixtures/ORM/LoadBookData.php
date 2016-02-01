@@ -25,6 +25,7 @@ class LoadBookData implements FixtureInterface
         $book
             ->setIsbn('123456')
             ->setAuthor('Frau Holle')
+            ->setPrice(47.11)
             ->setTitle('Kissen schütteln leicht gemacht');
 
         $om->persist($book);
@@ -33,6 +34,7 @@ class LoadBookData implements FixtureInterface
         $book
             ->setIsbn('7836')
             ->setAuthor('Inet Held 85')
+            ->setPrice(47.11)
             ->setTitle('Symfony for checkers');
         $om->persist($book);
 
@@ -40,6 +42,7 @@ class LoadBookData implements FixtureInterface
         $book
             ->setIsbn('8787878')
             ->setAuthor('Dieter Scherenhand')
+            ->setPrice(47.11)
             ->setTitle('Die wundervolle Welt des Häkelns');
         $om->persist($book);
         $om->flush();
