@@ -20,11 +20,13 @@ class BookController extends Controller
 {
     /**
      * @param string $id
+     *
      * @return Response
      */
     public function viewBookAction($id)
     {
         $book = $this->getBook($id);
+
         return $this->render('book/bookview.html.twig', array('book' => $book));
     }
 
@@ -34,11 +36,13 @@ class BookController extends Controller
     public function listBooksAction()
     {
         $books = $this->getBookList();
+
         return $this->render('book/booklist.html.twig', array('books' => $books));
     }
 
     /**
      * @param Request $request
+     *
      * @return RedirectResponse|Response
      */
     public function newAction(Request $request)
@@ -51,6 +55,7 @@ class BookController extends Controller
 
         if ($form->isValid()) {
             $this->addBookToModel($book);
+
             return $this->redirectToRoute('book_list');
         }
 
@@ -72,6 +77,7 @@ class BookController extends Controller
 
         if ($form->isValid()) {
             $this->addBookToModel($book);
+
             return $this->redirectToRoute('book_list');
         }
 
@@ -94,11 +100,13 @@ class BookController extends Controller
             ->getManager()
             ->getRepository('AppBundle:Book')
             ->findAllOrderedByTitle();
+
         return $books;
     }
 
     /**
      * @param string $id
+     *
      * @return Book
      */
     private function getBook($id)
@@ -113,6 +121,7 @@ class BookController extends Controller
         } catch (BookRepositoryException $e) {
             throw new NotFoundHttpException('The book you were searching for was not found.', $e);
         }
+
         return $book;
     }
 

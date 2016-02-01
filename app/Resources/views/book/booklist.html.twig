@@ -15,8 +15,11 @@
                         <td>
                             <a href="{{ path('book_view', {'id': book.getId}) }}">{{ book.getTitle }}</a>
                         </td>
-                        <td>{{ book.getPrice }}</td>
-                        <td><a href="{{ path('book_edit', {'id': book.getId}) }}">edit</a>
+                        <td>
+                            {{ book.getPrice }}
+                        </td>
+                        <td>
+                            <a href="{{ path('book_edit', {'id': book.getId}) }}">edit</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -24,9 +27,8 @@
         </div>
         <hr>
         <div>
-            <a href={{ path('book_new') }}>Add a book!</a>
+            <a href="{{ path('book_new') }}">Add a book!</a>
         </div>
     </div>
-
 
 {% endblock %}
