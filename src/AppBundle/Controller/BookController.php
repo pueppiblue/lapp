@@ -9,7 +9,10 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Book;
 use AppBundle\Exception\BookRepositoryException;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -82,6 +85,39 @@ class BookController extends Controller
         }
 
         return $this->render('book/bookCreateForm.html.twig', array('form' => $form->createView()));
+    }
+
+    /**
+     * @return Response
+     */
+    public function loadBookFixturesAction()
+    {
+        $kernel = $this->get('kernel');
+        $application = new Application($kernel);
+        $application->setAutoExit(false);
+
+        $input = new ArrayInput(array(
+            'command' => 'doctrine:fixtures:load',
+            '--append' => '',
+            '--fixtures' => sprintf(
+                '%s%s',
+                $kernel->getRootDir(),
+                '/../src/AppBundle/DataFixtures/ORM/LoadBookData.php'
+            ),
+        ));
+
+        $output = new BufferedOutput();
+
+        try {
+            $application->run($input, $output);
+
+            $content = $output->fetch();
+            $this->addFlash('info', $content);
+        } catch (\Exception $e) {
+            $this->addFlash('info', 'command failed with: ' . $e->getMessage());
+        }
+
+        return $this->redirectToRoute('book_list');
     }
 
     /**

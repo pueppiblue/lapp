@@ -28,3 +28,8 @@ book_edit:
   path: /books/edit/{id}
   defaults:
     _controller: AppBundle:Book:editBook
+
+book_load_fixtures:
+  path: /books/fixtures-load
+  defaults:
+    _controller: AppBundle:Book:loadBookFixtures

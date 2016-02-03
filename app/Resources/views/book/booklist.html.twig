@@ -29,6 +29,16 @@
         <div>
             <a href="{{ path('book_new') }}">Add a book!</a>
         </div>
+        <hr>
+        <div>
+            <a href="{{ path('book_load_fixtures') }}">Load book fixtures!</a>
+        </div>
+        {% for flash_message in app.session.flashbag.get('info') %}
+            <hr>
+            <div>
+                {{ flash_message }}
+            </div>
+        {% endfor %}
     </div>
 
 {% endblock %}
