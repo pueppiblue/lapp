@@ -24,6 +24,11 @@ book_view:
   defaults:
     _controller: AppBundle:Book:viewBook
 
+book_delete_all:
+  path: /books/delete-all
+  defaults:
+    _controller: AppBundle:Book:deleteAllBooks
+
 book_edit:
   path: /books/edit/{id}
   defaults:

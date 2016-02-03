@@ -33,6 +33,10 @@
         <div>
             <a href="{{ path('book_load_fixtures') }}">Load book fixtures!</a>
         </div>
+        <hr>
+        <div>
+            <a href="{{ path('book_delete_all') }}">Delete all books!</a>
+        </div>
         {% for flash_message in app.session.flashbag.get('info') %}
             <hr>
             <div>

@@ -88,6 +88,31 @@ class BookController extends Controller
     }
 
     /**
+     * @return RedirectResponse
+     */
+    public function deleteAllBooksAction()
+    {
+        $books = $this->getBookList();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $count = 0;
+        foreach ($books as $book) {
+            $entityManager->remove($book);
+            $count++;
+        }
+        $entityManager->flush();
+        $this->addFlash(
+            'info',
+            sprintf(
+                'Successfully deleted %s books!',
+                $count
+            )
+        );
+
+        return $this->redirectToRoute('book_list');
+    }
+
+    /**
      * @return Response
      */
     public function loadBookFixturesAction()
