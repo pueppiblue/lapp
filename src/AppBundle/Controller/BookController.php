@@ -9,7 +9,10 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Book;
 use AppBundle\Exception\BookRepositoryException;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,11 +23,13 @@ class BookController extends Controller
 {
     /**
      * @param string $id
+     *
      * @return Response
      */
     public function viewBookAction($id)
     {
         $book = $this->getBook($id);
+
         return $this->render('book/bookview.html.twig', array('book' => $book));
     }
 
@@ -34,11 +39,13 @@ class BookController extends Controller
     public function listBooksAction()
     {
         $books = $this->getBookList();
+
         return $this->render('book/booklist.html.twig', array('books' => $books));
     }
 
     /**
      * @param Request $request
+     *
      * @return RedirectResponse|Response
      */
     public function newAction(Request $request)
@@ -47,24 +54,95 @@ class BookController extends Controller
 
         $form = $this->createForm('app_addBook', $book);
 
-//        $form = $this->createForm(new BookType, $book);
+        $form->handleRequest($request);
 
-//        $form = $this->createFormBuilder(
-//            $book, array('validation_groups' => array('creation')))
-//            ->add('title', 'text', array('required'=>false))
-//            ->add('isbn','text', array('required'=>false))
-//            ->add('author','text', array('required'=>false))
-//            ->add('save','submit',array('label' => 'Add book!'))
-//            ->getForm();
+        if ($form->isValid()) {
+            $this->addBookToModel($book);
+
+            return $this->redirectToRoute('book_list');
+        }
+
+        return $this->render('book/bookCreateForm.html.twig', array('form' => $form->createView()));
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse|Response
+     */
+    public function editBookAction(Request $request)
+    {
+        $book = $this->getBook($request->get('id'));
+
+        $form = $this->createForm('app_addBook', $book);
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $this->addBookToModel($book);
+
             return $this->redirectToRoute('book_list');
         }
 
         return $this->render('book/bookCreateForm.html.twig', array('form' => $form->createView()));
+    }
+
+    /**
+     * @return RedirectResponse
+     */
+    public function deleteAllBooksAction()
+    {
+        $books = $this->getBookList();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $count = 0;
+        foreach ($books as $book) {
+            $entityManager->remove($book);
+            $count++;
+        }
+        $entityManager->flush();
+        $this->addFlash(
+            'info',
+            sprintf(
+                'Successfully deleted %s books!',
+                $count
+            )
+        );
+
+        return $this->redirectToRoute('book_list');
+    }
+
+    /**
+     * @return Response
+     */
+    public function loadBookFixturesAction()
+    {
+        $kernel = $this->get('kernel');
+        $application = new Application($kernel);
+        $application->setAutoExit(false);
+
+        $input = new ArrayInput(array(
+            'command' => 'doctrine:fixtures:load',
+            '--append' => '',
+            '--fixtures' => sprintf(
+                '%s%s',
+                $kernel->getRootDir(),
+                '/../src/AppBundle/DataFixtures/ORM/LoadBookData.php'
+            ),
+        ));
+
+        $output = new BufferedOutput();
+
+        try {
+            $application->run($input, $output);
+
+            $content = $output->fetch();
+            $this->addFlash('info', $content);
+        } catch (\Exception $e) {
+            $this->addFlash('info', 'command failed with: ' . $e->getMessage());
+        }
+
+        return $this->redirectToRoute('book_list');
     }
 
     /**
@@ -83,11 +161,13 @@ class BookController extends Controller
             ->getManager()
             ->getRepository('AppBundle:Book')
             ->findAllOrderedByTitle();
+
         return $books;
     }
 
     /**
      * @param string $id
+     *
      * @return Book
      */
     private function getBook($id)
@@ -102,6 +182,7 @@ class BookController extends Controller
         } catch (BookRepositoryException $e) {
             throw new NotFoundHttpException('The book you were searching for was not found.', $e);
         }
+
         return $book;
     }
 
