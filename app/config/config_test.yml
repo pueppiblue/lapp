@@ -14,3 +14,7 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+parameters:
+    database_user:     travis
+    database_password: ~
