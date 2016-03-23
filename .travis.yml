@@ -6,13 +6,10 @@ php:
   - 7.0
   - hhvm
 
-install:
-  - travis_retry composer self-update && composer --version
-  - travis_retry composer install --prefer-dist --no-interaction
-
-
 before_script:
   - cp app/config/parameters.yml.travis app/config/parameters.yml
+  - composer self-update && composer --version
+  - composer install --prefer-dist --no-interaction
   - php app/console doctrine:database:create --env=test
   - php app/console doctrine:schema:create --env=test
   - php app/console doctrine:fixtures:load -n --env=test
