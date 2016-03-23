@@ -9,6 +9,3 @@ AppBundle\Entity\Book:
         isbn:
             - NotBlank:
                 groups: [creation]
-        price:
-            - NotBlank:
-                groups: [creation]
