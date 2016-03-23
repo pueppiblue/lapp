@@ -16,6 +16,11 @@ before_script:
 script:
   - phpunit -c app
 
+cache:
+  directories:
+    - vendor
+    - $HOME/.composer/cache
+
 notifications:
   email:
     -  nils.freigang@gmx.de
