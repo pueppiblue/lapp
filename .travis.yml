@@ -1,3 +1,19 @@
+Skip to content
+This repository  
+Search
+Pull requests
+Issues
+Gist
+ @pueppiblue
+ Unwatch 2
+  Star 1
+  Fork 1 pueppiblue/lapp
+ Code  Issues 14  Pull requests 1  Wiki  Pulse  Graphs  Settings
+Branch: master Find file Copy pathlapp/.travis.yml
+53073c0  3 minutes ago
+@pueppiblue pueppiblue travis integration3
+1 contributor
+RawBlameHistory    29 lines (23 sloc)  581 Bytes
 language: php
 
 php:
@@ -9,12 +25,13 @@ php:
 install:
   - travis_retry composer self-update && composer --version
   - travis_retry composer install --prefer-dist --no-interaction
-  - php app/console doctrine:database:create --env=test
-  - php app/console doctrine:schema:create --env=test
-  - php app/console doctrine:fixtures:load -n --env=test
+
 
 before_script:
   - cp app/config/parameters.yml.travis app/config/parameters.yml
+  - php app/console doctrine:database:create --env=test
+  - php app/console doctrine:schema:create --env=test
+  - php app/console doctrine:fixtures:load -n --env=test
 
 script:
   - phpunit -c app
@@ -27,3 +44,5 @@ cache:
 notifications:
   email:
     -  nils.freigang@gmx.de
+Status API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Contact Help
