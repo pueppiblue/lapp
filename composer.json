@@ -27,6 +27,12 @@
         "doctrine/doctrine-fixtures-bundle": "^2.3"
     },
     "scripts": {
+        "reset-db": [
+            "php bin/console doctrine:database:drop --no-interaction --force --if-exists",
+            "php bin/console doctrine:database:create --env=test",
+            "php bin/console doctrine:migrations:migrate --no-interaction",
+            "php app/console doctrine:fixtures:load -n --env=test"
+        ],
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
