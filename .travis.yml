@@ -10,6 +10,7 @@ services:
   - mysql
 
 before_script:
+  - cp app/config/parameters.yml.travis app/config/parameters.yml
   - composer self-update && composer --version
   - composer install --prefer-dist --no-interaction
   - php app/console doctrine:database:drop --no-interaction --force --if-exists
