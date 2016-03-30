@@ -1,11 +1,10 @@
 {
     "name": "pueppi/lapp",
     "license": "proprietary",
+    "description": "The \"Symfony Standard Edition\" distribution",
     "type": "project",
     "autoload": {
-        "psr-4": {
-            "": "src/"
-        }
+        "psr-4": { "": "src/" }
     },
     "minimum-stability": "stable",
     "require": {
