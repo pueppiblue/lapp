@@ -15,6 +15,6 @@ AppBundle\Entity\User:
         password:
             type: string
             length: 255
-        isActive:
+        active:
             type: boolean
     lifecycleCallbacks: {  }

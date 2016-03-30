@@ -50,8 +50,6 @@ class BookRepository extends EntityRepository
         }
 
         return $book;
-//        $book = $this->findOneBy($id);
-//        return $book;
     }
 
 }

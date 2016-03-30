@@ -19,14 +19,14 @@ class LoadUserData implements FixtureInterface
         $user
             ->setUsername('admin')
             ->setPassword('admin')
-            ->setIsActive(true);
+            ->setActive(true);
         $manager->persist($user);
 
         $user = new User();
         $user
             ->setUsername('Bücherwurm84')
             ->setPassword('readforlife')
-            ->setIsActive(true);
+            ->setActive(true);
         $manager->persist($user);
 
         $manager->flush();
