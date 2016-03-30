@@ -16,7 +16,7 @@ Install notes:
 >$ sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs
 
 ###create user for mysql
->mysql -uroot  -p -e "grant all on lapp.* to lapp@'localhost' identified by 'lapp';flush privileges;
+>mysql -uroot  -p -e "grant all on lapp.* to lapp@'localhost' identified by 'lapp';flush privileges;"
 
 ###reinitialize database, execute migrations and insert fixtures
 >php app/console doctrine:database:drop --no-interaction --force --if-exists
