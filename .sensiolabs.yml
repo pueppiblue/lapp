@@ -1,4 +1,4 @@
-lobal_exclude_dirs:
+global_exclude_dirs:
     - vendor
     - vendors
     - test
