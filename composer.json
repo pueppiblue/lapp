@@ -4,7 +4,7 @@
     "description": "The \"Symfony Standard Edition\" distribution",
     "type": "project",
     "autoload": {
-        "psr-4": { "": "src/" }
+        "psr-4": { "AppBundle\\": "src/AppBundle" }
     },
     "minimum-stability": "stable",
     "require": {
