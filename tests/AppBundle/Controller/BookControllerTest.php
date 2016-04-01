@@ -6,7 +6,7 @@
  * Time: 15:20
  */
 
-namespace AppBundle\Tests\Controller;
+namespace Tests\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

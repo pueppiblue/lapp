@@ -3,7 +3,7 @@ global_exclude_dirs:
     - vendors
     - test
     - tests
-    - Tests
+    - tests
     - lib/vendor
 
 exclude_patterns:

@@ -26,7 +26,7 @@ class BookType extends AbstractType
     }
 
     public function getName(){
-        return 'app_addBook';
+        return 'AppBundle\Form\Type\BookType';
     }
 
     public function configureOptions(OptionsResolver $resolver){

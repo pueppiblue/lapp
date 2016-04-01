@@ -45,7 +45,7 @@ class BookController extends Controller
     {
         $book = new Book();
 
-        $form = $this->createForm('app_addBook', $book);
+        $form = $this->createForm('AppBundle\Form\Type\BookType', $book);
 
         $form->handleRequest($request);
 
