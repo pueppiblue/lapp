@@ -8,6 +8,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Book;
+use AppBundle\Form\Type\BookType;
 use AppBundle\Exception\BookRepositoryException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -45,7 +46,7 @@ class BookController extends Controller
     {
         $book = new Book();
 
-        $form = $this->createForm('AppBundle\Form\Type\BookType', $book);
+        $form = $this->createForm(BookType::class, $book);
 
         $form->handleRequest($request);
 

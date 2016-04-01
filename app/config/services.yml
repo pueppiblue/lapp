@@ -11,4 +11,4 @@ services:
   app.form.type.addbook:
       class: AppBundle\Form\Type\BookType
       tags:
-          - {name: form.type, alias: app_addBook}
+          - {name: form.type}

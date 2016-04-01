@@ -25,10 +25,6 @@ class BookType extends AbstractType
 
     }
 
-    public function getName(){
-        return 'AppBundle\Form\Type\BookType';
-    }
-
     public function configureOptions(OptionsResolver $resolver){
         $resolver->setDefaults(
             array(
