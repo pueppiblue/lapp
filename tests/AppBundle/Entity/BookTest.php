@@ -13,22 +13,24 @@ use AppBundle\Entity\Book;
 class BookTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @param array @bookData
+     * @param string $title
+     * @param string $author
+     * @param string $isbn
+     * @param string $price
      * @dataProvider providerBookData
      */
-    public function testGetBookReturnsExpectedBookObject($bookData)
+    public function testGetBookReturnsExpectedBookObject($title, $author, $isbn, $price)
     {
         $book = new Book();
+        $book->setTitle($title)
+            ->setAuthor($author)
+            ->setIsbn($isbn)
+            ->setPrice($price);
 
-        $book->setTitle($bookData['title'])
-            ->setAuthor($bookData['author'])
-            ->setIsbn($bookData['isbn'])
-            ->setPrice($bookData['price']);
-
-        assertEquals($book->getTitle(),$bookData['title']);
-        assertEquals($book->getAuthor(),$bookData['author']);
-        assertEquals($book->getISBN(),$bookData['isbn']);
-        assertEquals($book->getPrice(),$bookData['price']);
+        $this->assertEquals($book->getTitle(), $title);
+        $this->assertEquals($book->getAuthor(), $author);
+        $this->assertEquals($book->getISBN(), $isbn);
+        $this->assertEquals($book->getPrice(), $price);
 
     }
 
