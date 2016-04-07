@@ -9,6 +9,7 @@
 namespace Tests\AppBundle\Form\Type;
 
 use AppBundle\Form\Type\BookType;
+use AppBundle\Entity\Book;
 use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
 
@@ -43,12 +44,32 @@ class BookTypeTest extends TypeTestCase
             'price' => '99',
         );
 
-
+        // test that class BookType compiles
         $form = $this->factory->create(BookType::class);
 
-        //$form->submit($formData);
+        $book = new Book();
+        $book->setTitle($formData['title'])
+            ->setAuthor($formData['author'])
+            ->setIsbn($formData['isbn'])
+            ->setPrice($formData['price']);
 
+        $form->submit($formData);
+
+        // test that data is correctly transformed by the form
         $this->assertTrue($form->isSynchronized());
+
+        // test that form was submitted and the data mapping is correct
+        $this->assertEquals($book, $form->getData());
+
+        // test that all widgets(eg keys from $formData)
+        // are available in the children property
+        $view = $form->createView();
+        $children = $view->children;
+
+        foreach (array_keys($formData) as $key) {
+            $this->assertArrayHasKey($key, $children);
+        }
+
 
     }
 }
