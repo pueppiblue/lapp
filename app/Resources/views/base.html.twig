@@ -7,6 +7,11 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        {% block menu %}
+            <div id='mainmenu'>
+                {{ knp_menu_render('main') }}
+            </div>
+        {% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

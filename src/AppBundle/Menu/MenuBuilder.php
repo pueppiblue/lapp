@@ -26,10 +26,16 @@ class MenuBuilder
     public function createMainMenu(array $options)
     {
         $menu = $this->factory->createItem('root');
+        $menu->addChild("Books");
+        $menu->addChild("User");
 
-        $menu->addChild("List of Books", array('route' => 'book_list' ));
+        $bookmenu = $menu['Books'];
+        $bookmenu->addChild('Booklist', array('route' => 'book_list' ));
+        $bookmenu->addChild('Create new Book', array ('route' => 'book_new'));
 
-
+        $usermenu = $menu['User'];
+        $usermenu->addChild('list users');
+        $usermenu->addChild('create user');
 
         return $menu;
     }
