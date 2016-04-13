@@ -1,0 +1,25 @@
+{
+  "name": "lapp",
+  "version": "1.0.0",
+  "description": "Learning application for symfony framework and related tools",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pueppiblue/lapp.git"
+  },
+  "keywords": [
+    "symfony"
+  ],
+  "author": "pueppiblue",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pueppiblue/lapp/issues"
+  },
+  "homepage": "https://github.com/pueppiblue/lapp#readme"
+}
