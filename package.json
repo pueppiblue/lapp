@@ -24,5 +24,8 @@
   "homepage": "https://github.com/pueppiblue/lapp#readme",
   "dependencies": {
     "bower": "^1.7.9"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
   }
 }
