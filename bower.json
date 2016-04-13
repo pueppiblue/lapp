@@ -1,0 +1,24 @@
+{
+  "name": "lapp",
+  "description": "Learning application for symfony framework and related tools",
+  "main": "index.js",
+  "authors": [
+    "pueppiblue"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "symfony"
+  ],
+  "homepage": "https://github.com/pueppiblue/lapp",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/assets/vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
