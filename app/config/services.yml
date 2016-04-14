@@ -20,3 +20,6 @@ services:
           - name: knp_menu.menu_builder
             method: createMainMenu
             alias: main
+          - name: knp_menu.menu_builder
+            method: createSidebarMenu
+            alias: sidebar

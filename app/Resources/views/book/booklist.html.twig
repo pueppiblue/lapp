@@ -1,25 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id='booklist'>
-        <h3>Liste der Bücher:</h3>
-        <div>
-            <table class="table-striped">
-                <tr>
-                    <td>Title</td>
-                    <td>Price</td>
-                </tr>
-                {% for book in books %}
+    <div class="row">
+        <div class="col s2">
+                  {% set menu = knp_menu_get('sidebar', [], {include_homepage: true}) %}
+                  {{ knp_menu_render(menu) }}
+       </div>
+        <div class="col s9">
+            <h3>Liste der Bücher:</h3>
+            <div class="card-panel purple lighten-1">
+                <table class="table-striped table-responsive">
                     <tr>
-                        <td><a href ={{ path('book_view', {'id': book.getId}) }}> {{ book.getTitle }}</a></td>
-                        <td>{{ book.getPrice }}</td>
+                        <td>Title</td>
+                        <td>Price</td>
                     </tr>
-                {% endfor %}
-            </table>
-        </div>
-        <div>
-            <a href={{ path('book_new') }}>Add a book!</a>
-        </div>
+                    {% for book in books %}
+                        <tr>
+                            <td><a href ={{ path('book_view', {'id': book.getId}) }}> {{ book.getTitle }}</a></td>
+                            <td>{{ book.getPrice }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="card-panel purple lighten-1">
+                <a href={{ path('book_new') }}>Add a book!</a>
+            </div>
+       </div>
     </div>
 {% endblock %}
 

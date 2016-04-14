@@ -40,4 +40,17 @@ class MenuBuilder
         return $menu;
     }
 
+    public function createSidebarMenu(array $options)
+    {
+        $menu = $this->factory->createItem('sidebar');
+
+        if (isset($options['include_homepage']) && $options['include_homepage']) {
+            $menu->addChild('Home', array('route' => 'book_list'));
+        }
+
+        // ... add more children
+
+        return $menu;
+    }
+
 }
