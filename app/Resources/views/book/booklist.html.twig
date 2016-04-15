@@ -2,9 +2,9 @@
 
 {% block body %}
     <div class="row">
-        <div class="col s2">
+        <div class="col s3">
                   {% set menu = knp_menu_get('sidebar', [], {include_homepage: true}) %}
-                  {{ knp_menu_render(menu) }}
+                  {{ knp_menu_render('main') }}
        </div>
         <div class="col s9">
             <h3>Liste der Bücher:</h3>
