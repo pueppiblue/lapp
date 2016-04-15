@@ -4,15 +4,17 @@ var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 var cleanCSS = require('gulp-clean-css');
 var config = {
-    materializeDir: 'web/assets/vendor/Materialize',
+    materializeDir: 'vendor/bower_components/Materialize/sass/materialize.scss',
+    bootstrapDir: 'vendor/bower_components/bootstrap/dist/css/bootstrap.css',
     customAssetDir: 'app/Resources/assets',
-    sassPattern: 'sass/**/*.scss'
+    sassPattern: 'sass/**/*.scss)'
 };
 
 gulp.task('createCss', function(){
     gulp.src([
-            config.materializeDir+ '/'+config.sassPattern,
-            config.customAssetDir+"/"+config.sassPattern])
+            config.materializeDir,
+            config.customAssetDir+"/"+config.sassPattern,
+            config.bootstrapDir])
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(concat('main.css'))
