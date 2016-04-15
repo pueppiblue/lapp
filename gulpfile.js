@@ -1,15 +1,24 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
+var config = {
+    materializeDir: 'web/assets/vendor/Materialize',
+    customAssetDir: 'app/Resources/assets',
+    sassPattern: 'sass/**/*.scss'
+};
 
-gulp.task('getcss', function(){
-    gulp.src('web/assets/vendor/Materialize/sass/materialize.scss')
+gulp.task('createCss', function(){
+    gulp.src([
+            config.materializeDir+ '/'+config.sassPattern,
+            config.customAssetDir+"/"+config.sassPattern])
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('web/css'));
 });
 
-gulp.task('default', function() {
-console.log('Testing Gulp script')
+gulp.task('watch', function(){
+    gulp.watch(config.customAssetDir+"/"+config.sassPattern, ['createCss'])
 });
+
+gulp.task('default', ['createCss', 'watch']);
