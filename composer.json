@@ -28,10 +28,25 @@
         "doctrine/doctrine-fixtures-bundle": "^2.3"
     },
     "scripts": {
-        "reset-db": [
-            "php app/console doctrine:database:drop --no-interaction --force --if-exists",
-            "php app/console doctrine:database:create",
-            "php app/console doctrine:migrations:migrate --no-interaction",
+        "project-init": [
+            "@composer-init",
+            "@assets-init",
+            "@database-init"
+        ],
+        "assets-init": [
+            "npm install",
+            "./node_modules/.bin/bower install --allow-root",
+            "./node_modules/.bin/gulp createAssets"
+        ],
+        "composer-init": [
+            "php composer.phar install",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "php app/console cache:clear"
+        ],
+        "database-init": [
+        "php app/console doctrine:database:drop --no-interaction --force --if-exists",
+        "php app/console doctrine:database:create",
+        "php app/console doctrine:migrations:migrate --no-interaction",
             "php app/console doctrine:fixtures:load -n"
         ],
         "post-install-cmd": [
