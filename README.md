@@ -6,10 +6,11 @@
 
 Installation notes:
 --------------
-###Install composer and vendor bundles
+### Install composer and npm
 ```bash
->curl -sS https://getcomposer.org/installer | php
->php composer.phar install
+curl -sS https://getcomposer.org/installer | php
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
+source ~/.nvm/nvm.sh && nvm install 5.10.1
 ```
 
 ###give webserver access to cache and logs
@@ -24,13 +25,7 @@ $ HTTPDUSER=`ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]g
 mysql -uroot  -p -e "grant all on lapp.* to lapp@'localhost' identified by 'lapp';flush privileges;"
 ```
 
-###reinitialize database, execute migrations and insert fixtures
+### run composer script to initialize the application
 ```bash
->php app/console doctrine:database:drop --no-interaction --force --if-exists
->php app/console doctrine:database:create
->php app/console doctrine:migrations:migrate --no-interaction
-```
-or 
-```bash
->php composer.phar run-script reset-db
+php composer.phar run-script project-init
 ```
