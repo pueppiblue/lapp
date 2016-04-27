@@ -27,6 +27,8 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7",
+    "require-dir": "^0.3.0",
     "gulp-clean-css": "^2.0.6",
     "gulp-concat": "^2.6.0",
     "gulp-sass": "^2.2.0",
