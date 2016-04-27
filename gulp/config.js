@@ -13,7 +13,8 @@ module.exports = {
             output: 'bootstrap.css'
         },
         custom: {
-            src: ['app/Resources/assets/css/**/*.css'],
+            src: ['app/Resources/assets/css/**/*.css',
+            'app/Resources/assets/css/color.scss'],
             output: 'lapp_main.css'
         },
         dest: dest + "/css"

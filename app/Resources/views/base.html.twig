@@ -14,22 +14,26 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
 
-<body class="purple lighten-5 container">
-        {% block menu %}
-        {% endblock %}
-        {% block body %}
-        {% endblock %}
+<body class="purple lighten-5">
+
+            {% block navbar %}
+                {{ include('::navbar.html.twig') }}
+            {% endblock %}
+
+            {% block body %}
+            {% endblock %}
+
         {% block javascripts %}
             <script src="{{ asset('js/jquery.js') }}"></script>
             <script src="{{ asset('js/bootstrap.js') }}"></script>
             <script src="{{ asset('js/material.js') }}"></script>
             <script>
-//                $(window.document).ready(function () {
-//                    $.material.init();
-//                });
+                //                $(window.document).ready(function () {
+                //                    $.material.init();
+                //                });
             </script>
-
         {% endblock %}
-    </body>
+
+</body>
 </html>
 
