@@ -1,29 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="row">
-        <div class="col s12 m4 z-depth-1">
-            Sidebar
-        </div>
-        <div class="col s12 m8 offset-m4 z-depth-1">
-            <h5>Liste der Bücher:</h5>
+    <h5>Liste der Bücher:</h5>
 
-            <table class="table-striped table-hover table-responsive">
-                <tr>
-                    <td>Title</td>
-                    <td>Price</td>
-                </tr>
-                {% for book in books %}
-                    <tr>
-                        <td><a href ={{ path('book_view', {'id': book.getId}) }}> {{ book.getTitle }}</a></td>
-                        <td>{{ book.getPrice }}</td>
-                    </tr>
-                {% endfor %}
-            </table>
-        </div>
+    <table class="table-striped table-hover table-responsive z-depth-1">
+        <tr>
+            <td>Title</td>
+            <td>Price</td>
+        </tr>
+        {% for book in books %}
+            <tr>
+                <td><a href ={{ path('book_view', {'id': book.getId}) }}> {{ book.getTitle }}</a></td>
+                <td>{{ book.getPrice }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="well well-sm">
+                <a id="addbook" class="btn-floating waves-effect waves-circle purple darken-2 z-depth-1"
+                   href={{  path('book_new') }}><i class="material-icons">add</i>
+                </a>
+                <label for="addbook"><a>Add a book</a></label>
     </div>
-        {#<div class="card-panel purple lighten-1">#}
-    {#<a href={{ path('book_new') }}>Add a book!</a>#}
-    {#</div>#}
 {% endblock %}
 
