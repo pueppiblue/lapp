@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: pueppi
- * Date: 30.11.15
- * Time: 17:18
- */
 
 namespace AppBundle\Form\Type;
 
@@ -21,7 +15,6 @@ class BookType extends AbstractType
             ->add('author')
             ->add('isbn')
             ->add('price')
-            ->add('save', SubmitType::class)
         ;
 
     }
